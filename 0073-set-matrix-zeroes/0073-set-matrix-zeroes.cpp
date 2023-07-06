@@ -4,7 +4,7 @@
 
             int m = matrix.size();
             int n = matrix[0].size();
-            int rowZero = 1;
+            bool rowZero = false;
             for(int r =0;r<m; r++)
             {
                 for(int c= 0; c<n; c++)
@@ -18,7 +18,7 @@
                         }
                         else
                         {
-                            rowZero = 0;
+                            rowZero = true;
                         }
                     }
                 }
@@ -40,7 +40,7 @@
                         matrix[r][0] = 0;
                     }
                 }
-                if(rowZero == 0)
+                if(rowZero)
                 {
                     for(int c = 0; c < n; c++)
                     {
