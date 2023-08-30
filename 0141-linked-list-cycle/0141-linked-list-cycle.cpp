@@ -1,25 +1,37 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
+/// O(N), space O(1) floyds tortoise-hare
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
-        ListNode* temp = head;
-        map<ListNode* , bool> visited;
-        while(temp)
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while(fast && fast->next)
         {
-            if(visited[temp])
+            fast = fast->next->next;
+            slow = slow->next;
+            if(fast == slow)
             {
                 return true;
             }
-            visited[temp] = true;
-            temp = temp->next;
         }
         return false;
     }
 };
+
+//time O(N) space O(N)
+// class Solution {
+// public:
+//     bool hasCycle(ListNode *head) {
+//         ListNode* temp = head;
+//         map<ListNode* , bool> visited;
+//         while(temp)
+//         {
+//             if(visited[temp])
+//             {
+//                 return true;
+//             }
+//             visited[temp] = true;
+//             temp = temp->next;
+//         }
+//         return false;
+//     }
+// };
