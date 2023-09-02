@@ -1,20 +1,24 @@
+//linear time and constant space - boyer moore's voting algorithm
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-        // int n = nums.size();
-        //Linear time and linear space
-unordered_map<int, int> freq;
-        int n = nums.size();
-        for(int i =0; i < n; i ++)
+        int ans;
+        int count = 0;
+        for(int i =0; i < nums.size(); i++)
         {
-            freq[nums[i]]++;
-            if(freq[nums[i]] > (n/2))
+            if(count == 0)//
             {
-                return nums[i];
+                ans = nums[i];
             }
+            if(nums[i] == ans)
+                count++;
+            else
+                count--;
         }
-        return -1;
-        
+
+        //after this, run a loop to check if the found element acutally appears more than n/2 times. BUT here we are given that a majority element will always exist. so NP.
+        return ans;
     }
 };
+
 
