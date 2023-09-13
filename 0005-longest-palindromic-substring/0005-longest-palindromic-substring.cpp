@@ -21,8 +21,7 @@ public:
                 maxSubstring = s.substr(i-1, 2);
             }
         }
-
-
+        
         for(int k = 3; k <= n; k++)     // k is the length of substring
         {
             // all substrings of len k
